@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> Welcome to KVPL Library Management System </title>
+        <link rel ="stylesheet" href="{% static 'css/login.css' %}">
+    </head>
+    <body>
+        <div class="center">
+            <h1> System login </h1>
+            <form method="post" action="{% url 'login' %}" >
+                {% csrf_token %}
+                <div class="txt_field">
+                    <input type="text" class="form-control" name="username" required="">
+                    <span>  </span>
+                    <label> Username </label>
+                </div>
+                
+                <div class="txt_field">
+                    <input type="password" class="form-control" name="password" required="">
+                    <span>  </span>
+                    <label> Password </label>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" name="sign-in" value="Sign In" class="btn float-left login_btn">
+                </div>
+
+                <div class="form-group">
+                    <a href="{% url 'regform' %}" class="btn float-right login_btn" name="sign-up"> Register </a>
+                </div>
+            </form>
+        </div>
+
+        <div class="card-footer">
+            <div class="d-flex justify-content-center">
+                {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                    <a class="alert alert-success" style="color:black;"> {{ message }} </a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+    </body>
+</html>
+

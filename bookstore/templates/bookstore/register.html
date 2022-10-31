@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title> If you are new please register here. </title>
+        <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    </head>
+    <body>
+        <div class="center">
+            <h1> Register here </h1>
+            <form method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+
+                <div class="txt_field">
+                    <input type="text" class="form-control" name="username" required="">
+                    <span> </span>
+                    <label> Username </label>
+                </div>
+
+                <div class="txt_field">
+                    <input type="text" class="form-control" name="first_name" required="">
+                    <span> </span>
+                    <label> First Name </label>
+                </div>
+
+                <div class="txt_field">
+                    <input type="text" class="form-control" name="last_name" required="">
+                    <span> </span>
+                    <label> Last Name </label>
+                </div>
+
+                <div class="txt_field">
+                    <input type="email" class="form-control" name="email" required="">
+                    <span> </span>
+                    <label> Email </label>
+                </div>
+
+                <div class="txt_field">
+                    <input type="password" class="form-control" name="password" required="">
+                    <span> </span>
+                    <label> Password </label>
+                </div>
+
+
+                <div class="form-group">
+                    <a href="{% url 'home' %}" name="sign-up" class="btn float-right login_btn"> Login </a>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" name="sign-up" value="Register" class="btn float-left login_btn">
+                </div>
+            </form>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <a class="alert alert-success" style="color:black;"> {{ message }}  </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        
+
+    </body>
+</html>
